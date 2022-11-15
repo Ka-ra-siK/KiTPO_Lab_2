@@ -1,0 +1,13 @@
+[debug] > Exec(run, None, None)
+[debug] Evaluating tasks: Compile / run
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[info] compiling 1 Scala source to C:\Config\Scala\Lab_2_Scala\target\scala-2.13\classes ...
+[error] C:\Config\Scala\Lab_2_Scala\src\main\scala\gui\GUI.scala:136:31: cycle_list.CycleList does not take parameters
+[error]                   cycleList = new CycleList()(userType.getTypeComparator)
+[error]                               ^
+[error] one error found
+[error] (Compile / compileIncremental) Compilation failed
+[error] Total time: 2 s, completed Nov 16, 2022, 12:52:54 AM
+[debug] > Exec(idea-shell, None, None)
+[debug] > Exec(, None, None)
+[debug] > Exec(idea-shell, None, None)

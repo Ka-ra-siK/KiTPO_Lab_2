@@ -1,0 +1,38 @@
+[debug] [zinc] IncrementalCompile -----------
+[debug] IncrementalCompile.incrementalCompile
+[debug] previous = Stamps for: 23 products, 14 sources, 5 libraries
+[debug] current source = Set(${BASE}/src/main/scala/testing/Testing.scala, ${BASE}/src/main/scala/types/DoubleType.scala, ${BASE}/src/main/scala/cycle_list/Iterator.scala, ${BASE}/src/main/scala/comparator/Comparator.scala, ${BASE}/src/main/scala/types/users/DoubleUserType.scala, ${BASE}/src/main/scala/Main.scala, ${BASE}/src/main/scala/types/users/PointUserType.scala, ${BASE}/src/main/scala/types/users/UserType.scala, ${BASE}/src/main/scala/comparator/PointComparator.scala, ${BASE}/src/main/scala/cycle_list/CycleList.scala, ${BASE}/src/main/scala/gui/GUI.scala, ${BASE}/src/main/scala/comparator/DoubleComparator.scala, ${BASE}/src/main/scala/types/PointType.scala, ${BASE}/src/main/scala/factory/UserFactory.scala)
+[debug] > initialChanges = InitialChanges(Changes(added = Set(), removed = Set(), changed = Set(${BASE}/src/main/scala/gui/GUI.scala), unmodified = ...),Set(),Set(),API Changes: Set())
+[debug] 
+[debug] Initial source changes:
+[debug] 	removed: Set()
+[debug] 	added: Set()
+[debug] 	modified: Set(${BASE}/src/main/scala/gui/GUI.scala)
+[debug] Invalidated products: Set()
+[debug] External API changes: API Changes: Set()
+[debug] Modified binary dependencies: Set()
+[debug] Initial directly invalidated classes: Set(gui.GUI)
+[debug] Sources indirectly invalidated by:
+[debug] 	product: Set()
+[debug] 	binary dep: Set()
+[debug] 	external source: Set()
+[debug] All initially invalidated classes: Set(gui.GUI)
+[debug] All initially invalidated sources:Set(${BASE}/src/main/scala/gui/GUI.scala)
+[debug] Initial set of included nodes: gui.GUI
+[debug] compilation cycle 1
+[info] compiling 1 Scala source to C:\Config\Scala\Lab_2_Scala\target\scala-2.13\classes ...
+[debug] Getting org.scala-sbt:compiler-bridge_2.13:1.8.0:compile for Scala 2.13.10
+[debug] [zinc] Running cached compiler 317ba967 for Scala compiler version 2.13.10
+[debug] [zinc] The Scala compiler is invoked with:
+[debug] 	-bootclasspath
+[debug] 	C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala-library\2.13.10\scala-library-2.13.10.jar
+[debug] 	-classpath
+[debug] 	C:\Config\Scala\Lab_2_Scala\target\scala-2.13\classes;C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-base\11\javafx-base-11-win.jar;C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-controls\11\javafx-controls-11-win.jar;C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-fxml\11\javafx-fxml-11-win.jar;C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-graphics\11\javafx-graphics-11-win.jar;C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-media\11\javafx-media-11-win.jar;C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-swing\11\javafx-swing-11-win.jar;C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-web\11\javafx-web-11-win.jar;C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\scalafx\scalafx_2.13\16.0.0-R24\scalafx_2.13-16.0.0-R24.jar;C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-graphics\11\javafx-graphics-11.jar;C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-controls\11\javafx-controls-11.jar;C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-base\11\javafx-base-11.jar;C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-media\11\javafx-media-11.jar;C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala-reflect\2.13.10\scala-reflect-2.13.10.jar
+[debug] New invalidations:
+[debug] Initial set of included nodes: 
+[debug] Previously invalidated, but (transitively) depend on new invalidations:
+[debug] Final step, transitive dependencies:
+[debug] 	Set()
+[debug] No classes were invalidated.
+[debug] Scala compilation took 8.2475185 s
+[info] done compiling

@@ -1,0 +1,16 @@
+[debug] > Exec(run, None, None)
+[debug] Evaluating tasks: Compile / run
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[error] java.lang.RuntimeException: No toolkit found
+[error] 	at com.sun.javafx.tk.Toolkit.getToolkit(Toolkit.java:272)
+[error] 	at com.sun.javafx.application.PlatformImpl.startup(PlatformImpl.java:267)
+[error] 	at com.sun.javafx.application.PlatformImpl.startup(PlatformImpl.java:158)
+[error] 	at com.sun.javafx.application.LauncherImpl.startToolkit(LauncherImpl.java:658)
+[error] 	at com.sun.javafx.application.LauncherImpl.launchApplication1(LauncherImpl.java:678)
+[error] 	at com.sun.javafx.application.LauncherImpl.lambda$launchApplication$2(LauncherImpl.java:195)
+[error] 	at java.base/java.lang.Thread.run(Thread.java:833)
+[error] (Compile / run) No toolkit found
+[error] Total time: 13 s, completed Nov 16, 2022, 12:13:16 AM
+[debug] > Exec(idea-shell, None, None)
+[debug] > Exec(, None, None)
+[debug] > Exec(idea-shell, None, None)
