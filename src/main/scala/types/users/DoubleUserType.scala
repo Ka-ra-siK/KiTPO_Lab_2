@@ -39,4 +39,5 @@ class DoubleUserType extends UserType {
 
   override def toString(`object`: Any): String = `object`.toString
 
+
 }

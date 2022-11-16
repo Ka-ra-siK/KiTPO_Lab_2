@@ -3,7 +3,6 @@ package factory
 import types.users.{UserType, PointUserType, DoubleUserType}
 class UserFactory {
   val typeList : List[UserType] = List(new DoubleUserType, new PointUserType)
-
   def getTypeNameList: List[String] = {
     var list: List[String] = List()
     for (t <- typeList) {
@@ -11,7 +10,6 @@ class UserFactory {
     }
     list
   }
-
   def getBuilderByName(name: String): UserType = {
     if (name == null) throw new NullPointerException
     for (userType <- typeList) {
@@ -19,6 +17,4 @@ class UserFactory {
     }
     throw new IllegalArgumentException
   }
-
-
 }

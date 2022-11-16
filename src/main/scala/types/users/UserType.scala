@@ -28,5 +28,7 @@ trait UserType {
   def getTypeComparator: Comparator
 
   def toString(`object`: Any): String
+
+
 }
 

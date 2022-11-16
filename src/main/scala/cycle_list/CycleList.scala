@@ -7,6 +7,7 @@ import comparator.Comparator
 
 import scala.language.postfixOps
 
+
 /**
  * Класс циклического списка.
  * Реализованы основные методы:
@@ -27,11 +28,6 @@ import scala.language.postfixOps
  */
 
 class CycleList {
-
-  //  private var head = null
-  //  private var length = 0
-  //
-  //  private var comparator = null
 
   private var head: Node = _
   private var length: Int = 0
@@ -89,6 +85,16 @@ class CycleList {
     length += 1
   }
 
+  /**
+   * Сортировка слиянием.
+   * Реализовано 3 метода: (mergeSort(), merge(), getMidNode()).
+   *
+   * @param comparator экземпляр класса Comparator, для сравнения объектов
+   * @see mergeSort(Node, Comparator) рекурсивно разделяет список
+   * @see merge(Node, Node, Comparator) выполняет слияние
+   * @see getMidNode(Node) находит центр списка
+   * */
+
   def sort(comparator: Comparator): Unit = {
     if (head != null && (head.next ne head) && (head.prev ne head)) {
       var tail = head.prev
@@ -101,19 +107,40 @@ class CycleList {
     }
   }
 
+  def sortFuncStyle(comparator: Comparator): Unit ={
+    if (head != null && (head.next ne head) && (head.prev ne head)) {
+      var xs: Array[Any] = new Array[Any](length)
+      for (i <- 0 to length - 1) {
+        xs(i) = this.getByIndex(i)
+      }
+      xs = sortFuncDivision(xs, comparator)
+      this.clearList()
+      for (i <- 0 to xs.length - 1) {
+        this.add(xs(i))
+      }
+    }
+  }
+
+  def sortFuncDivision(xs: Array[Any], comparator: Comparator): Array[Any] = {
+    if (xs.length <= 1) xs
+    else {
+      val pivot = xs(xs.length / 2)
+      Array.concat(
+        sortFuncDivision(xs.filter(comparator.compare(pivot, _) > 0), comparator),
+        xs.filter(comparator.compare(pivot, _) == 0),
+        sortFuncDivision(xs.filter(comparator.compare(pivot, _) < 0), comparator))
+    }
+  }
+
   private def mergeSort(headNode: Node, comparator: Comparator): Node = {
     if (headNode == null || headNode.next == null) {
       return headNode
     }
-
     val middle = getMiddle(headNode)
     val middleNext = middle.next
-
     middle.next = null
-
     val left = mergeSort(headNode, comparator)
     val right = mergeSort(middleNext, comparator)
-
     merge(left, right, comparator)
   }
 
@@ -235,89 +262,6 @@ class CycleList {
     }
   }
 
-  /**
-   * Сортировка слиянием.
-   * Реализовано 3 метода: (mergeSort(), merge(), getMidNode()).
-   *
-   * @param comparator экземпляр класса Comparator, для сравнения объектов
-   * @see mergeSort(Node, Comparator) рекурсивно разделяет список
-   * @see merge(Node, Node, Comparator) выполняет слияние
-   * @see getMidNode(Node) находит центр списка
-   * */
-  //    def sort(comparator: Comparator): Unit = {
-  //      if (head != null && (head.next ne head) && (head.prev ne head)) {
-  //        var tail = head.prev
-  //        tail.next = null
-  //        head.prev = null
-  //        head = mergeSort(head, comparator)
-  //        tail = getNode(length - 1)
-  //        tail.next = head
-  //        head.prev = tail
-  //      }
-  //    }
-  //
-  //    private def mergeSort(headNode: Node, comparator: Comparator): Node = {
-  //      if (headNode == null || headNode.next == null) return headNode
-  //      val middle = getMidNode(headNode)
-  //      val middleNext = middle.next
-  //      middle.next = null
-  //      val left = mergeSort(headNode, comparator)
-  //      val right = mergeSort(middleNext, comparator)
-  //      merge(left, right, comparator)
-  //    }
-  //
-  //    private def merge(firstNode: Node, secondNode: Node, comparator: Comparator) = {
-  //      var
-  //      val merged = new Node(null)
-  //      var temp = merged
-  //      var tail = head.prev
-  //      while ( {
-  //        firstNode != null && secondNode != null
-  //      }) {
-  //        if (comparator.compare(firstNode.data, secondNode.data) < 0) {
-  //          temp.next = firstNode
-  //          firstNode.prev = temp
-  //          firstNode = firstNode.next
-  //        }
-  //        else {
-  //          temp.next = secondNode
-  //          secondNode.prev = temp
-  //          secondNode = secondNode.next
-  //        }
-  //        temp = temp.next
-  //      }
-  //      while ( {
-  //        firstNode != null
-  //      }) {
-  //        temp.next = firstNode
-  //        firstNode.prev = temp
-  //        firstNode = firstNode.next
-  //        temp = temp.next
-  //      }
-  //      while ( {
-  //        secondNode != null
-  //      }) {
-  //        temp.next = secondNode
-  //        secondNode.prev = temp
-  //        secondNode = secondNode.next
-  //        temp = temp.next
-  //        tail = temp
-  //      }
-  //      merged.next
-  //    }
-  //
-      private def getMidNode(node: Node) = {
-        var previousNode = node
-        var currentNode = node
-        while ( {
-          currentNode.next != null && currentNode.next.next != null
-        }) {
-          previousNode = previousNode.next
-          currentNode = currentNode.next.next
-        }
-        previousNode
-      }
-
   def printList(): Unit = {
     var tmp = head
     for (i <- 0 until length) {
@@ -341,6 +285,9 @@ class CycleList {
     head = null
     length = 0
   }
+
+
+
 
   /**
    * Сохранение в файл
