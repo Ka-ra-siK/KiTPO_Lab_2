@@ -107,6 +107,9 @@ class CycleList {
     }
   }
 
+  /** Вызов сортировик разделением
+   * @param comparator
+   */
   def sortFuncStyle(comparator: Comparator): Unit ={
     if (head != null && (head.next ne head) && (head.prev ne head)) {
       var xs: Array[Any] = new Array[Any](length)
@@ -121,6 +124,12 @@ class CycleList {
     }
   }
 
+  /**
+   * Сортировка рекурсивным слиянием
+   * @param xs массив элементов списка
+   * @param comparator
+   * @return
+   */
   def sortFuncDivision(xs: Array[Any], comparator: Comparator): Array[Any] = {
     if (xs.length <= 1) xs
     else {
@@ -197,7 +206,6 @@ class CycleList {
     }
     slow
   }
-
 
   def remove(index: Int): Unit = {
     var tmp = getNode(index)
@@ -285,9 +293,6 @@ class CycleList {
     head = null
     length = 0
   }
-
-
-
 
   /**
    * Сохранение в файл
