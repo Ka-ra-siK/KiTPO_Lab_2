@@ -133,17 +133,6 @@ class CycleList {
    * @param comparator
    * @return
    */
-  def sortFuncDivisionn(xs: Array[Any], comparator: Comparator): Array[Any] = {
-    if (xs.length <= 1) xs
-    else {
-      val pivot = xs(xs.length / 2)
-      Array.concat(
-        sortFuncDivisionn(xs.filter(comparator.compare(pivot, _) > 0), comparator),
-        xs.filter(comparator.compare(pivot, _) == 0),
-        sortFuncDivisionn(xs.filter(comparator.compare(pivot, _) < 0), comparator))
-    }
-  }
-
   def sortFuncDivision(comparator: Comparator): CycleList = {
     if (this.length <= 1)
       this
