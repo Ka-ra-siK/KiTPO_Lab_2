@@ -5,7 +5,7 @@ import types.users.UserType
 import java.io.{BufferedReader, BufferedWriter, FileReader, FileWriter, IOException}
 import comparator.Comparator
 
-import scala.Boolean
+import scala.{::, Boolean}
 import scala.language.postfixOps
 
 
@@ -133,37 +133,31 @@ class CycleList {
    * @param comparator
    * @return
    */
-    def sortFuncDivisionn(xs: Array[Any], comparator: Comparator): Array[Any] = {
-      if (xs.length <= 1) xs
-      else {
-        val pivot = xs(xs.length / 2)
-        Array.concat(
-          sortFuncDivisionn(xs.filter(comparator.compare(pivot, _) > 0), comparator),
-          xs.filter(comparator.compare(pivot, _) == 0),
-          sortFuncDivisionn(xs.filter(comparator.compare(pivot, _) < 0), comparator))
-      }
+  def sortFuncDivisionn(xs: Array[Any], comparator: Comparator): Array[Any] = {
+    if (xs.length <= 1) xs
+    else {
+      val pivot = xs(xs.length / 2)
+      Array.concat(
+        sortFuncDivisionn(xs.filter(comparator.compare(pivot, _) > 0), comparator),
+        xs.filter(comparator.compare(pivot, _) == 0),
+        sortFuncDivisionn(xs.filter(comparator.compare(pivot, _) < 0), comparator))
     }
+  }
 
   def sortFuncDivision(comparator: Comparator): CycleList = {
     if (this.length <= 1)
       this
     else {
-      val pivot = getNode(0).data
+      val pivot = this.head.data
       var l1 = new CycleList
       val l2 = new CycleList
       var l3 = new CycleList
-      forEach(
-      if (comparator.compare(pivot, _) < 0)
-        l1.add(_)
-      )
-      forEach(
-      if (comparator.compare(pivot, _) > 0)
-        l3.add(_)
-      )
-      forEach(
-      if (comparator.compare(pivot, _) == 0)
-        l2.add(_)
-      )
+
+      forEach(x => {
+        if (comparator.compare(pivot, x) > 0) l1.add(x)
+        if (comparator.compare(pivot, x) < 0) l3.add(x)
+        if (comparator.compare(pivot, x) == 0) l2.add(x)
+      })
       l1 = l1.sortFuncDivision(comparator)
       l3 = l3.sortFuncDivision(comparator)
       l2.forEach(l1.add(_))

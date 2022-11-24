@@ -1,6 +1,10 @@
 [debug] Acquiring lock on file C:\Config\Scala\Lab_2_Scala\project\target\.sbt-compilation-infos\root-compile\.sbt-idea-lock ...
-[warn] 1 deprecation (since 16.0.0-R23)
-[warn] 1 deprecation (since 2.13.3)
-[warn] 2 deprecations in total; re-run with -deprecation for details
-[warn] three warnings found
+[warn] C:\Config\Scala\Lab_2_Scala\src\main\scala\cycle_list\CycleList.scala:352:5: A try without a catch or finally is equivalent to putting its body in a block; no exceptions are handled.
+[warn]     try {
+[warn]     ^
+[warn] 1 deprecation (since 2.13.0)
+[warn] 1 deprecation (since 2.13.2)
+[warn] 2 deprecations (since 2.13.3)
+[warn] 4 deprecations in total; re-run with -deprecation for details
+[warn] 5 warnings found
 [debug] Releasing lock on file C:\Config\Scala\Lab_2_Scala\project\target\.sbt-compilation-infos\root-compile\.sbt-idea-lock.

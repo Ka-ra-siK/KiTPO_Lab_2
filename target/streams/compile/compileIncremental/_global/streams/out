@@ -1,38 +1,95 @@
 [debug] [zinc] IncrementalCompile -----------
 [debug] IncrementalCompile.incrementalCompile
-[debug] previous = Stamps for: 23 products, 14 sources, 5 libraries
+[debug] previous = Stamps for: 28 products, 14 sources, 5 libraries
 [debug] current source = Set(${BASE}/src/main/scala/testing/Testing.scala, ${BASE}/src/main/scala/types/DoubleType.scala, ${BASE}/src/main/scala/cycle_list/Iterator.scala, ${BASE}/src/main/scala/comparator/Comparator.scala, ${BASE}/src/main/scala/types/users/DoubleUserType.scala, ${BASE}/src/main/scala/Main.scala, ${BASE}/src/main/scala/types/users/PointUserType.scala, ${BASE}/src/main/scala/types/users/UserType.scala, ${BASE}/src/main/scala/comparator/PointComparator.scala, ${BASE}/src/main/scala/cycle_list/CycleList.scala, ${BASE}/src/main/scala/gui/GUI.scala, ${BASE}/src/main/scala/comparator/DoubleComparator.scala, ${BASE}/src/main/scala/types/PointType.scala, ${BASE}/src/main/scala/factory/UserFactory.scala)
-[debug] > initialChanges = InitialChanges(Changes(added = Set(), removed = Set(), changed = Set(${BASE}/src/main/scala/gui/GUI.scala), unmodified = ...),Set(),Set(),API Changes: Set())
+[debug] > initialChanges = InitialChanges(Changes(added = Set(), removed = Set(), changed = Set(${BASE}/src/main/scala/types/users/UserType.scala, ${BASE}/src/main/scala/types/users/PointUserType.scala, ${BASE}/src/main/scala/types/users/DoubleUserType.scala, ${BASE}/src/main/scala/cycle_list/CycleList.scala, ${BASE}/src/main/scala/Main.scala), unmodified = ...),Set(${BASE}/target/scala-2.13/classes/types/users/DoubleUserType.class, ${BASE}/target/scala-2.13/classes/cycle_list/CycleList.class, ${BASE}/target/scala-2.13/classes/types/users/UserType.class, ${BASE}/target/scala-2.13/classes/Main$.class, ${BASE}/target/scala-2.13/classes/types/users/PointUserType.class),Set(),API Changes: Set())
 [debug] 
 [debug] Initial source changes:
 [debug] 	removed: Set()
 [debug] 	added: Set()
-[debug] 	modified: Set(${BASE}/src/main/scala/gui/GUI.scala)
-[debug] Invalidated products: Set()
+[debug] 	modified: Set(${BASE}/src/main/scala/types/users/DoubleUserType.scala, ${BASE}/src/main/scala/Main.scala, ${BASE}/src/main/scala/types/users/PointUserType.scala, ${BASE}/src/main/scala/types/users/UserType.scala, ${BASE}/src/main/scala/cycle_list/CycleList.scala)
+[debug] Invalidated products: Set(${BASE}/target/scala-2.13/classes/types/users/DoubleUserType.class, ${BASE}/target/scala-2.13/classes/cycle_list/CycleList.class, ${BASE}/target/scala-2.13/classes/types/users/UserType.class, ${BASE}/target/scala-2.13/classes/Main$.class, ${BASE}/target/scala-2.13/classes/types/users/PointUserType.class)
 [debug] External API changes: API Changes: Set()
 [debug] Modified binary dependencies: Set()
-[debug] Initial directly invalidated classes: Set(gui.GUI)
+[debug] Initial directly invalidated classes: Set(cycle_list.CycleList, types.users.UserType, types.users.PointUserType, cycle_list.CycleList.Node, types.users.DoubleUserType, Main)
 [debug] Sources indirectly invalidated by:
-[debug] 	product: Set()
+[debug] 	product: Set(${BASE}/src/main/scala/types/users/DoubleUserType.scala, ${BASE}/src/main/scala/Main.scala, ${BASE}/src/main/scala/types/users/PointUserType.scala, ${BASE}/src/main/scala/types/users/UserType.scala, ${BASE}/src/main/scala/cycle_list/CycleList.scala)
 [debug] 	binary dep: Set()
 [debug] 	external source: Set()
-[debug] All initially invalidated classes: Set(gui.GUI)
-[debug] All initially invalidated sources:Set(${BASE}/src/main/scala/gui/GUI.scala)
-[debug] Initial set of included nodes: gui.GUI
+[debug] All initially invalidated classes: Set(cycle_list.CycleList, types.users.UserType, types.users.PointUserType, cycle_list.CycleList.Node, types.users.DoubleUserType, Main)
+[debug] All initially invalidated sources:Set(${BASE}/src/main/scala/types/users/DoubleUserType.scala, ${BASE}/src/main/scala/Main.scala, ${BASE}/src/main/scala/types/users/PointUserType.scala, ${BASE}/src/main/scala/types/users/UserType.scala, ${BASE}/src/main/scala/cycle_list/CycleList.scala)
+[debug] Initial set of included nodes: cycle_list.CycleList, types.users.UserType, types.users.PointUserType, cycle_list.CycleList.Node, types.users.DoubleUserType, Main
+[debug] Including types.users.PointUserType by types.users.UserType
+[debug] Including types.users.DoubleUserType by types.users.UserType
 [debug] compilation cycle 1
-[info] compiling 1 Scala source to C:\Config\Scala\Lab_2_Scala\target\scala-2.13\classes ...
+[info] compiling 5 Scala sources to C:\Config\Scala\Lab_2_Scala\target\scala-2.13\classes ...
 [debug] Getting org.scala-sbt:compiler-bridge_2.13:1.8.0:compile for Scala 2.13.10
-[debug] [zinc] Running cached compiler 317ba967 for Scala compiler version 2.13.10
+[debug] [zinc] Running cached compiler 3245464b for Scala compiler version 2.13.10
 [debug] [zinc] The Scala compiler is invoked with:
 [debug] 	-bootclasspath
 [debug] 	C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala-library\2.13.10\scala-library-2.13.10.jar
 [debug] 	-classpath
 [debug] 	C:\Config\Scala\Lab_2_Scala\target\scala-2.13\classes;C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-base\11\javafx-base-11-win.jar;C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-controls\11\javafx-controls-11-win.jar;C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-fxml\11\javafx-fxml-11-win.jar;C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-graphics\11\javafx-graphics-11-win.jar;C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-media\11\javafx-media-11-win.jar;C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-swing\11\javafx-swing-11-win.jar;C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-web\11\javafx-web-11-win.jar;C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\scalafx\scalafx_2.13\16.0.0-R24\scalafx_2.13-16.0.0-R24.jar;C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-graphics\11\javafx-graphics-11.jar;C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-controls\11\javafx-controls-11.jar;C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-base\11\javafx-base-11.jar;C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\openjfx\javafx-media\11\javafx-media-11.jar;C:\Users\polka\AppData\Local\Coursier\Cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala-reflect\2.13.10\scala-reflect-2.13.10.jar
+[debug] Invalidating (transitively) by inheritance from types.users.PointUserType...
+[debug] Initial set of included nodes: types.users.PointUserType
+[debug] Invalidated by transitive inheritance dependency: Set(types.users.PointUserType)
+[debug] None of the modified names appears in source file of factory.UserFactory. This dependency is not being considered for invalidation.
+[debug] None of the modified names appears in source file of testing.Testing. This dependency is not being considered for invalidation.
+[debug] Change NamesChange(types.users.PointUserType,ModifiedNames(changes = UsedName(bigger,[Default]), UsedName(equal,[Default]), UsedName(lower,[Default]))) invalidates 1 classes due to The types.users.PointUserType has the following regular definitions changed:
+[debug] 	UsedName(bigger,[Default]), UsedName(equal,[Default]), UsedName(lower,[Default]).
+[debug]   > by transitive inheritance: Set(types.users.PointUserType)
+[debug]   > 
+[debug]   > 
+[debug]         
+[debug] Invalidating (transitively) by inheritance from types.users.UserType...
+[debug] Initial set of included nodes: types.users.UserType
+[debug] Including types.users.PointUserType by types.users.UserType
+[debug] Including types.users.DoubleUserType by types.users.UserType
+[debug] Invalidated by transitive inheritance dependency: Set(types.users.DoubleUserType, types.users.PointUserType, types.users.UserType)
+[debug] None of the modified names appears in source file of factory.UserFactory. This dependency is not being considered for invalidation.
+[debug] None of the modified names appears in source file of testing.Testing. This dependency is not being considered for invalidation.
+[debug] None of the modified names appears in source file of factory.UserFactory. This dependency is not being considered for invalidation.
+[debug] None of the modified names appears in source file of testing.Testing. This dependency is not being considered for invalidation.
+[debug] None of the modified names appears in source file of factory.UserFactory. This dependency is not being considered for invalidation.
+[debug] The following modified names cause invalidation of cycle_list.CycleList: [UsedName(lower,[Default]), UsedName(equal,[Default]), UsedName(bigger,[Default])]
+[debug] None of the modified names appears in source file of testing.Testing. This dependency is not being considered for invalidation.
+[debug] None of the modified names appears in source file of gui.GUI. This dependency is not being considered for invalidation.
+[debug] None of the modified names appears in source file of types.users.PointUserType. This dependency is not being considered for invalidation.
+[debug] None of the modified names appears in source file of types.users.DoubleUserType. This dependency is not being considered for invalidation.
+[debug] Change NamesChange(types.users.UserType,ModifiedNames(changes = UsedName(lower,[Default]), UsedName(equal,[Default]), UsedName(bigger,[Default]))) invalidates 4 classes due to The types.users.UserType has the following regular definitions changed:
+[debug] 	UsedName(lower,[Default]), UsedName(equal,[Default]), UsedName(bigger,[Default]).
+[debug]   > by transitive inheritance: Set(types.users.DoubleUserType, types.users.PointUserType, types.users.UserType)
+[debug]   > 
+[debug]   > by member reference: Set(cycle_list.CycleList)
+[debug]         
+[debug] Invalidating (transitively) by inheritance from types.users.DoubleUserType...
+[debug] Initial set of included nodes: types.users.DoubleUserType
+[debug] Invalidated by transitive inheritance dependency: Set(types.users.DoubleUserType)
+[debug] None of the modified names appears in source file of factory.UserFactory. This dependency is not being considered for invalidation.
+[debug] None of the modified names appears in source file of testing.Testing. This dependency is not being considered for invalidation.
+[debug] Change NamesChange(types.users.DoubleUserType,ModifiedNames(changes = UsedName(lower,[Default]), UsedName(equal,[Default]), UsedName(bigger,[Default]))) invalidates 1 classes due to The types.users.DoubleUserType has the following regular definitions changed:
+[debug] 	UsedName(lower,[Default]), UsedName(equal,[Default]), UsedName(bigger,[Default]).
+[debug]   > by transitive inheritance: Set(types.users.DoubleUserType)
+[debug]   > 
+[debug]   > 
+[debug]         
+[debug] Invalidating (transitively) by inheritance from cycle_list.CycleList...
+[debug] Initial set of included nodes: cycle_list.CycleList
+[debug] Invalidated by transitive inheritance dependency: Set(cycle_list.CycleList)
+[debug] None of the modified names appears in source file of Main. This dependency is not being considered for invalidation.
+[debug] None of the modified names appears in source file of testing.Testing. This dependency is not being considered for invalidation.
+[debug] None of the modified names appears in source file of gui.GUI. This dependency is not being considered for invalidation.
+[debug] Change NamesChange(cycle_list.CycleList,ModifiedNames(changes = UsedName(sort2,[Default]))) invalidates 1 classes due to The cycle_list.CycleList has the following regular definitions changed:
+[debug] 	UsedName(sort2,[Default]).
+[debug]   > by transitive inheritance: Set(cycle_list.CycleList)
+[debug]   > 
+[debug]   > 
+[debug]         
 [debug] New invalidations:
 [debug] Initial set of included nodes: 
 [debug] Previously invalidated, but (transitively) depend on new invalidations:
 [debug] Final step, transitive dependencies:
 [debug] 	Set()
 [debug] No classes were invalidated.
-[debug] Scala compilation took 8.2475185 s
+[debug] Scala compilation took 2.4367157 s
 [info] done compiling
