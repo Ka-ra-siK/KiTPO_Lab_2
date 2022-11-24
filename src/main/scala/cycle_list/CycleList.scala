@@ -5,6 +5,7 @@ import types.users.UserType
 import java.io.{BufferedReader, BufferedWriter, FileReader, FileWriter, IOException}
 import comparator.Comparator
 
+import scala.Boolean
 import scala.language.postfixOps
 
 
@@ -108,15 +109,16 @@ class CycleList {
   }
 
   /** Вызов сортировик разделением
+   *
    * @param comparator
    */
-  def sortFuncStyle(comparator: Comparator): Unit ={
+  def sortFuncStyle(comparator: Comparator): Unit = {
     if (head != null && (head.next ne head) && (head.prev ne head)) {
       var xs: Array[Any] = new Array[Any](length)
       for (i <- 0 to length - 1) {
         xs(i) = this.getByIndex(i)
       }
-      xs = sortFuncDivision(xs, comparator)
+      sortFuncDivision(comparator)
       this.clearList()
       for (i <- 0 to xs.length - 1) {
         this.add(xs(i))
@@ -126,18 +128,47 @@ class CycleList {
 
   /**
    * Сортировка рекурсивным слиянием
+   *
    * @param xs массив элементов списка
    * @param comparator
    * @return
    */
-  def sortFuncDivision(xs: Array[Any], comparator: Comparator): Array[Any] = {
-    if (xs.length <= 1) xs
+    def sortFuncDivisionn(xs: Array[Any], comparator: Comparator): Array[Any] = {
+      if (xs.length <= 1) xs
+      else {
+        val pivot = xs(xs.length / 2)
+        Array.concat(
+          sortFuncDivisionn(xs.filter(comparator.compare(pivot, _) > 0), comparator),
+          xs.filter(comparator.compare(pivot, _) == 0),
+          sortFuncDivisionn(xs.filter(comparator.compare(pivot, _) < 0), comparator))
+      }
+    }
+
+  def sortFuncDivision(comparator: Comparator): CycleList = {
+    if (this.length <= 1)
+      this
     else {
-      val pivot = xs(xs.length / 2)
-      Array.concat(
-        sortFuncDivision(xs.filter(comparator.compare(pivot, _) > 0), comparator),
-        xs.filter(comparator.compare(pivot, _) == 0),
-        sortFuncDivision(xs.filter(comparator.compare(pivot, _) < 0), comparator))
+      val pivot = getNode(0).data
+      var l1 = new CycleList
+      val l2 = new CycleList
+      var l3 = new CycleList
+      forEach(
+      if (comparator.compare(pivot, _) < 0)
+        l1.add(_)
+      )
+      forEach(
+      if (comparator.compare(pivot, _) > 0)
+        l3.add(_)
+      )
+      forEach(
+      if (comparator.compare(pivot, _) == 0)
+        l2.add(_)
+      )
+      l1 = l1.sortFuncDivision(comparator)
+      l3 = l3.sortFuncDivision(comparator)
+      l2.forEach(l1.add(_))
+      l3.forEach(l1.add(_))
+      l1
     }
   }
 
@@ -248,10 +279,10 @@ class CycleList {
    *
    * @param iterator
    */
-  def forEach(iterator: Iterator[Any]): Unit = {
+  def forEach(iterator: Any => Unit): Unit = {
     var tmp = head
     for (i <- 0 until length) {
-      iterator.toDo(tmp.data)
+      iterator(tmp.data)
       tmp = tmp.next
     }
   }
@@ -262,10 +293,10 @@ class CycleList {
    *
    * @param iterator
    */
-  def forEachReverse(iterator: Iterator[Any]): Unit = {
+  def forEachReverse(iterator: Any => Unit): Unit = {
     var tmp = head
     for (i <- 0 until length) {
-      iterator.toDo(tmp.data)
+      iterator(tmp.data)
       tmp = tmp.prev
     }
   }
