@@ -108,24 +108,6 @@ class CycleList {
     }
   }
 
-  /** Вызов сортировик разделением
-   *
-   * @param comparator
-   */
-  def sortFuncStyle(comparator: Comparator): Unit = {
-    if (head != null && (head.next ne head) && (head.prev ne head)) {
-      var xs: Array[Any] = new Array[Any](length)
-      for (i <- 0 to length - 1) {
-        xs(i) = this.getByIndex(i)
-      }
-      sortFuncDivision(comparator)
-      this.clearList()
-      for (i <- 0 to xs.length - 1) {
-        this.add(xs(i))
-      }
-    }
-  }
-
   /**
    * Сортировка рекурсивным слиянием
    *
