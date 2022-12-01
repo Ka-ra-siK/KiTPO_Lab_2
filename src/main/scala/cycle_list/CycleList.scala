@@ -108,83 +108,6 @@ class CycleList {
     }
   }
 
-  /**
-   * Сортировка рекурсивным слиянием
-   * Разделение - функциональный стиль
-   * Слияние - императивный стиль
-   * @param xs массив элементов списка
-   * @param comparator
-   * @return
-   */
-  def mergeSortFuncStyle(comparator: Comparator): CycleList = {
-    if (this.length <= 1)
-      this
-    else {
-      val sortedList = new CycleList
-      var leftList = new CycleList
-      var rightList = new CycleList
-      val middle = this.length / 2;
-      forEachListLeft(x => {
-        leftList.add(x)
-      }, 0, middle)
-
-      forEachListRight(x => {
-        rightList.add(x)
-      }, middle, this.length)
-
-      leftList = leftList.mergeSortFuncStyle(comparator)
-      rightList = rightList.mergeSortFuncStyle(comparator)
-
-      //Итератор
-      var left = leftList.head
-      var right = rightList.head
-      var leftHead = 0
-      var rightHead = 0
-
-      if (leftList.length == 1 && rightList.length == 1) {
-        if (comparator.compare(left.data, right.data) > 0) {
-          sortedList.add(right.data)
-          sortedList.add(left.data)
-        }
-        if (comparator.compare(left.data, right.data) <= 0) {
-          sortedList.add(left.data)
-          sortedList.add(right.data)
-        }
-      }
-      else{
-        while(leftHead < leftList.length && rightHead < rightList.length){
-          if (comparator.compare(left.data, right.data) > 0) {
-            sortedList.add(right.data)
-            right = right.next
-            rightHead = rightHead + 1
-          }
-          if (comparator.compare(left.data, right.data) <= 0) {
-            sortedList.add(left.data)
-            left = left.next
-            leftHead = leftHead + 1
-          }
-        }
-
-        if(rightHead == rightList.length) {
-          while (leftHead < leftList.length) {
-            sortedList.add(left.data)
-            left = left.next
-            leftHead = leftHead + 1
-          }
-        }
-
-        if(leftHead == leftList.length) {
-          while (rightHead < rightList.length) {
-            sortedList.add(right.data)
-            right = right.next
-            rightHead = leftHead + 1
-          }
-        }
-      }
-      sortedList
-    }
-  }
-
   private def mergeSort(headNode: Node, comparator: Comparator): Node = {
     if (headNode == null || headNode.next == null) {
       return headNode
@@ -238,6 +161,83 @@ class CycleList {
     merged.next
   }
 
+  /**
+   * Сортировка рекурсивным слиянием
+   * Разделение - функциональный стиль
+   * Слияние - императивный стиль
+   *
+   * @param xs массив элементов списка
+   * @param comparator
+   * @return
+   */
+  def mergeSortFuncStyle(comparator: Comparator): CycleList = {
+    if (this.length <= 1)
+      this
+    else {
+      val sortedList = new CycleList
+      var leftList = new CycleList
+      var rightList = new CycleList
+      val middle = this.length / 2;
+      forEachListLeft(x => {
+        leftList.add(x)
+      }, 0, middle)
+
+      forEachListRight(x => {
+        rightList.add(x)
+      }, middle, this.length)
+
+      leftList = leftList.mergeSortFuncStyle(comparator)
+      rightList = rightList.mergeSortFuncStyle(comparator)
+
+      //Итератор
+      var left = leftList.head
+      var right = rightList.head
+      var leftHead = 0
+      var rightHead = 0
+
+      if (leftList.length == 1 && rightList.length == 1) {
+        if (comparator.compare(left.data, right.data) > 0) {
+          sortedList.add(right.data)
+          sortedList.add(left.data)
+        }
+        if (comparator.compare(left.data, right.data) <= 0) {
+          sortedList.add(left.data)
+          sortedList.add(right.data)
+        }
+      }
+      else {
+        while (leftHead < leftList.length && rightHead < rightList.length) {
+          if (comparator.compare(left.data, right.data) > 0) {
+            sortedList.add(right.data)
+            right = right.next
+            rightHead = rightHead + 1
+          }
+          if (comparator.compare(left.data, right.data) <= 0) {
+            sortedList.add(left.data)
+            left = left.next
+            leftHead = leftHead + 1
+          }
+        }
+
+        if (rightHead == rightList.length) {
+          while (leftHead < leftList.length) {
+            sortedList.add(left.data)
+            left = left.next
+            leftHead = leftHead + 1
+          }
+        }
+
+        if (leftHead == leftList.length) {
+          while (rightHead < rightList.length) {
+            sortedList.add(right.data)
+            right = right.next
+            rightHead = leftHead + 1
+          }
+        }
+      }
+      sortedList
+    }
+  }
   private def getMiddle(h: Node) = {
     var fast = h.next
     var slow = h
