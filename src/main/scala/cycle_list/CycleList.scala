@@ -110,30 +110,78 @@ class CycleList {
 
   /**
    * Сортировка рекурсивным слиянием
-   *
+   * Разделение - функциональный стиль
+   * Слияние - императивный стиль
    * @param xs массив элементов списка
    * @param comparator
    * @return
    */
-  def sortFuncDivision(comparator: Comparator): CycleList = {
+  def mergeSortFuncStyle(comparator: Comparator): CycleList = {
     if (this.length <= 1)
       this
     else {
-      val pivot = this.head.data
-      var l1 = new CycleList
-      val l2 = new CycleList
-      var l3 = new CycleList
+      val sortedList = new CycleList
+      var leftList = new CycleList
+      var rightList = new CycleList
+      val middle = this.length / 2;
+      forEachListLeft(x => {
+        leftList.add(x)
+      }, 0, middle)
 
-      forEach(x => {
-        if (comparator.compare(pivot, x) > 0) l1.add(x)
-        if (comparator.compare(pivot, x) < 0) l3.add(x)
-        if (comparator.compare(pivot, x) == 0) l2.add(x)
-      })
-      l1 = l1.sortFuncDivision(comparator)
-      l3 = l3.sortFuncDivision(comparator)
-      l2.forEach(l1.add(_))
-      l3.forEach(l1.add(_))
-      l1
+      forEachListRight(x => {
+        rightList.add(x)
+      }, middle, this.length)
+
+      leftList = leftList.mergeSortFuncStyle(comparator)
+      rightList = rightList.mergeSortFuncStyle(comparator)
+
+      //Итератор
+      var left = leftList.head
+      var right = rightList.head
+      var leftHead = 0
+      var rightHead = 0
+
+      if (leftList.length == 1 && rightList.length == 1) {
+        if (comparator.compare(left.data, right.data) > 0) {
+          sortedList.add(right.data)
+          sortedList.add(left.data)
+        }
+        if (comparator.compare(left.data, right.data) <= 0) {
+          sortedList.add(left.data)
+          sortedList.add(right.data)
+        }
+      }
+      else{
+        while(leftHead < leftList.length && rightHead < rightList.length){
+          if (comparator.compare(left.data, right.data) > 0) {
+            sortedList.add(right.data)
+            right = right.next
+            rightHead = rightHead + 1
+          }
+          if (comparator.compare(left.data, right.data) <= 0) {
+            sortedList.add(left.data)
+            left = left.next
+            leftHead = leftHead + 1
+          }
+        }
+
+        if(rightHead == rightList.length) {
+          while (leftHead < leftList.length) {
+            sortedList.add(left.data)
+            left = left.next
+            leftHead = leftHead + 1
+          }
+        }
+
+        if(leftHead == leftList.length) {
+          while (rightHead < rightList.length) {
+            sortedList.add(right.data)
+            right = right.next
+            rightHead = leftHead + 1
+          }
+        }
+      }
+      sortedList
     }
   }
 
@@ -251,6 +299,26 @@ class CycleList {
       tmp = tmp.next
     }
   }
+
+  def forEachListLeft(iterator: Any => Unit, idBegin: Int, idEnd: Int): Unit = {
+    var tmp = head
+    for (i <- idBegin until idEnd) {
+      iterator(tmp.data)
+      tmp = tmp.next
+    }
+  }
+
+  def forEachListRight(iterator: Any => Unit, idBegin: Int, idEnd: Int): Unit = {
+    var tmp = head
+    for (i <- 0 until idBegin) {
+      tmp = tmp.next
+    }
+    for (i <- idBegin until idEnd) {
+      iterator(tmp.data)
+      tmp = tmp.next
+    }
+  }
+
 
   /**
    * Обход циклического списка, в обратном направлении,

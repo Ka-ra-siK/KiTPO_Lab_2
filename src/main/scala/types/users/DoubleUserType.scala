@@ -18,6 +18,11 @@ class DoubleUserType extends UserType {
     doubleTypeValue
   }
 
+  override def create(num:Any): Any = {
+    val doubleTypeValue = new DoubleType(num.toString.toDouble)
+    doubleTypeValue
+  }
+
   override def clone(`object`: Any): Any = {
     val copyDoubleTypeValue = new DoubleType(`object`.asInstanceOf[DoubleType].getDoubleTypeValue)
     copyDoubleTypeValue

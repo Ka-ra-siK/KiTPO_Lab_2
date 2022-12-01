@@ -18,6 +18,7 @@ trait UserType {
   def typeName: String
 
   def create: Any
+  def create(num: Any): Any
 
   def clone(`object`: Any): Any
 

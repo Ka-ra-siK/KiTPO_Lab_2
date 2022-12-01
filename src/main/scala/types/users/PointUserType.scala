@@ -52,5 +52,5 @@ class PointUserType extends UserType {
 
   override def toString(`object`: Any): String = `object`.toString
 
-
+  override def create(num: Any): Any = 1
 }
